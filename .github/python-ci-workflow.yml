@@ -10,7 +10,15 @@ permissions:
   contents: read
 
 jobs:
+
+  integration:
+    uses: ./.github/python-ci-workflow.yml
+    permissions:
+      contents: read
+      checks: write
+      
   build:
+    needs: [integration]
 
     runs-on: ubuntu-latest
     permissions:
